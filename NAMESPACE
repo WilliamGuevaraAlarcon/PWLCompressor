@@ -1,0 +1,11 @@
+### C code
+useDynLib(compressor)
+
+### Exports
+export(#
+		PWLCompressor
+		)
+exportPattern("^[[:alpha:]]+")
+		
+### Imports
+importFrom(Rcpp, evalCpp)

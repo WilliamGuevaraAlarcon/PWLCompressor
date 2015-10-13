@@ -1,0 +1,15 @@
+Package: compressor
+Type: Package
+Title: Compressor of Empirical Sample Distributions
+Version: 0.1
+Date: 2015-09-17
+Authors@R: c(person("William", "Guevara-Alarcon", role = c("aut","cre"), 
+					email = "william.guevaraalarcon@unil.ch"),
+				person("Philipp", "Arbenz", role = "aut", email = "philipp.arbenz@gmail.com"))
+Description: Compressor of univariate empirical sample distributions (Monte Carlo simulations) 
+	preserving risk measures.
+License: MIT + file LICENSE
+LazyData: TRUE
+LinkingTo: Rcpp
+Imports: Rcpp (>= 0.11.0)
+URL: http://sites.google.com/site/philipparbenz/home/pwl-approximation
