@@ -10,9 +10,6 @@ PWLCompressor(sample, accuracy = 0.01)
 \item{sample}{A vector with the sample values}
 
 \item{accuracy}{Relative accuracy of the approximation}
-
-\item{interpolationquantile}{List of quantiles which shall be contained in the basis of the approximation.
-Hence, for these quantiles the PWL distribution will have the same xTVaR as the sample distribution.}
 }
 \value{
 A list where X and Y cointains the abscissas and ordinates of the points for the admissible pwl approximation
