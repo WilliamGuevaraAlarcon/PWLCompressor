@@ -2,33 +2,37 @@
 % Please edit documentation in R/PWLCompressor.R
 \name{PWLCompressor}
 \alias{PWLCompressor}
-\title{Compress an edf to a pwl distribution}
+\title{Compress an edf from a sample to a pwl distribution}
 \usage{
-PWLCompressor(sample, accuracy = 0.01, quantile = c(0, 1), minatom = 1000,
-  relatom = 0.005, fullcheck = F)
+PWLCompressor(sample, accuracy = 0.01, enforced.quantiles = c(0, 1),
+  min.size.atom.detection = 1000, rel.atom.detection = 0.005,
+  check.strict.adm = T)
 }
 \arguments{
-\item{sample}{A vector with the sample values}
+\item{sample}{a vector with the sample values}
 
-\item{accuracy}{Relative accuracy of the approximation}
+\item{accuracy}{relative accuracy of the approximation}
 
-\item{quantile}{A vector with the quantiles which shall be contained in the basis of the approximation                         approximation.}
+\item{enforced.quantiles}{an optional vector with the quantiles which shall be contained in the basis of the approximation. For these quantiles the PWL distribution will have the same TVaR as the empirical distribution}
 
-\item{minatom}{Minimum sample size which needs to be satisfied such that the algorithm looks for atoms}
+\item{min.size.atom.detection}{minimum sample size which needs to be satisfied such that the algorithm looks for atoms}
 
-\item{relatom}{Relative threshold for atoms to be detected}
+\item{rel.atom.detection}{minimum proportion that a value has to be repeated in the sample in order to be considered as an atom}
 
-\item{fullcheck}{A boolean to determine whether the algorithm should check whether that an admissible approximation is also strictly admissible}
+\item{check.strict.adm}{logical. If TRUE the algorithm search for strict admissibility}
 }
 \value{
 A list where X and Y cointains the abscissas and ordinates of the points for the admissible pwl approximation
 }
 \description{
-Compress an edf to a pwl distribution
+Compress an edf from a sample to a pwl distribution
 }
 \examples{
-##Minimal example
+##  Minimal example
 Sample <- c(1,1.6,4.3,4.6,6,7.1,13,13.4,16,18.8)
 PWLapprox <- PWLCompressor(Sample, 0.01)
+}
+\references{
+Arbenz, P. and Guevara-Alarcon. W. (2016), \emph{Risk Measure Preserving Piecewise Linear Approximation of Empirical Distributions.} Preprint. \url{http://sites.google.com/site/philipparbenz/home/pwl-approximation}
 }
 
