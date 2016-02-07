@@ -5,7 +5,7 @@ test_that("Smoothing", {
   Accuracy = 0.11
 
   #result: [-0.3854547619047608, 10.556883333333333, 21.576450000000001] [0.0, 0.69999999999999996, 1.0]
-  CompressedSample = PWLCompressor(Sample, Accuracy)
+  CompressedSample = PWLCompressor(Sample, Accuracy, check.strict.adm = F)
   print(CompressedSample)
 
   expect_equal(CompressedSample$X, c(-0.3854547, 10.5568833, 21.57645), tolerance = 1e-06)

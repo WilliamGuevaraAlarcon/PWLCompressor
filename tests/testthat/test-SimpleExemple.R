@@ -4,7 +4,7 @@ test_that("SimpleExemple", {
   Sample = c(1, 1.6, 4.3, 4.6, 6, 7.1, 13, 13.4, 16, 18.8)
   Accuracy = 0.01
 
-  CompressedSample = PWLCompressor(Sample, Accuracy)
+  CompressedSample = PWLCompressor(Sample, Accuracy, check.strict.adm = F)
   print(CompressedSample)
 
   expect_equal(CompressedSample$X, c(0.85, 1.75, 3.8656, 5.0344, 8.0656, 12.9, 13.5, 16, 16, 18.8, 18.8), tolerance = 1e-03)

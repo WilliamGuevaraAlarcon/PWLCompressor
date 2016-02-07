@@ -2,12 +2,11 @@ Package: compressor
 Type: Package
 Title: Compressor of Empirical Sample Distributions
 Version: 0.2
-Date: 2016-02-14
+Date: 2016-02-05
 Authors@R: c(person("William", "Guevara-Alarcon", role = c("aut","cre"),
 					email = "william.guevaraalarcon@unil.ch"),
 				person("Philipp", "Arbenz", role = "aut", email = "philipp.arbenz@gmail.com"))
-Description: Compressor of univariate empirical sample distributions (Monte
-    Carlo simulations) preserving risk measures.
+Description: Approximation of univariate empirical sample distributions through a preserving risk measure piecewise linear distribution.
 License: MIT + file LICENSE
 LazyData: TRUE
 LinkingTo: Rcpp
