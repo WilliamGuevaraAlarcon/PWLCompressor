@@ -6,40 +6,45 @@ PWLCompressor::PWLCompressor(){}
 PWLCompressor::PWLCompressor(DoubleVec Sample, const double Accuracy)
 {
     const DoubleVec EnforcedInterpolationQuantiles; // empty vector...
-    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, DEFAULT_AtomDetectionMinimumSampleSize, DEFAULT_RelativeAtomDetectionThreshold, DEFAULT_CheckFullAdmissibility);
+    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, DEFAULT_AtomDetectionMinimumSampleSize, DEFAULT_RelativeAtomDetectionThreshold, DEFAULT_CheckFullAdmissibility, DEFAULT_ApplySmoothing);
 }
 
 PWLCompressor::PWLCompressor(DoubleVec Sample, const double Accuracy, const DoubleVec EnforcedInterpolationQuantiles)
 {
-    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, DEFAULT_AtomDetectionMinimumSampleSize, DEFAULT_RelativeAtomDetectionThreshold, DEFAULT_CheckFullAdmissibility);
+    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, DEFAULT_AtomDetectionMinimumSampleSize, DEFAULT_RelativeAtomDetectionThreshold, DEFAULT_CheckFullAdmissibility, DEFAULT_ApplySmoothing);
 }
 
 PWLCompressor::PWLCompressor(DoubleVec Sample, const double Accuracy, unsigned int AtomDetectionMinimumSampleSize, double RelativeAtomDetectionThreshold)
 {
     const DoubleVec EnforcedInterpolationQuantiles; // empty vector...
-    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, AtomDetectionMinimumSampleSize, RelativeAtomDetectionThreshold, DEFAULT_CheckFullAdmissibility);
+    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, AtomDetectionMinimumSampleSize, RelativeAtomDetectionThreshold, DEFAULT_CheckFullAdmissibility, DEFAULT_ApplySmoothing);
 }
 
-PWLCompressor::PWLCompressor(DoubleVec Sample, const double Accuracy, const DoubleVec EnforcedInterpolationQuantiles, unsigned int AtomDetectionMinimumSampleSize, 
-    double RelativeAtomDetectionThreshold, const bool CheckFullAdmissibility)
+PWLCompressor::PWLCompressor(DoubleVec Sample, const double Accuracy, const DoubleVec EnforcedInterpolationQuantiles, unsigned int AtomDetectionMinimumSampleSize,
+    double RelativeAtomDetectionThreshold, const bool CheckFullAdmissibility, const bool ApplySmoothing)
 {
-    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, AtomDetectionMinimumSampleSize, RelativeAtomDetectionThreshold, CheckFullAdmissibility);
+    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, AtomDetectionMinimumSampleSize, RelativeAtomDetectionThreshold, CheckFullAdmissibility, ApplySmoothing);
 }
 
 PWLCompressor::PWLCompressor(DoubleVec Sample, const double Accuracy, const bool CheckFullAdmissibility)
 {
     const DoubleVec EnforcedInterpolationQuantiles; // empty vector...
-    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, DEFAULT_AtomDetectionMinimumSampleSize, DEFAULT_RelativeAtomDetectionThreshold, CheckFullAdmissibility);
+    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, DEFAULT_AtomDetectionMinimumSampleSize, DEFAULT_RelativeAtomDetectionThreshold, CheckFullAdmissibility, DEFAULT_ApplySmoothing);
 }
 
-void PWLCompressor::FullConstructor(DoubleVec Sample, const double Accuracy, const DoubleVec EnforcedInterpolationQuantiles, 
-    unsigned int AtomDetectionMinimumSampleSize, double RelativeAtomDetectionThreshold, const bool CheckFullAdmissibility)
+PWLCompressor::PWLCompressor(DoubleVec Sample, const double Accuracy, const bool CheckFullAdmissibility, const bool ApplySmoothing){
+    const DoubleVec EnforcedInterpolationQuantiles; // empty vector...
+    FullConstructor(Sample, Accuracy, EnforcedInterpolationQuantiles, DEFAULT_AtomDetectionMinimumSampleSize, DEFAULT_RelativeAtomDetectionThreshold, CheckFullAdmissibility, ApplySmoothing);
+
+}
+
+void PWLCompressor::FullConstructor(DoubleVec Sample, const double Accuracy, const DoubleVec EnforcedInterpolationQuantiles,
+    unsigned int AtomDetectionMinimumSampleSize, double RelativeAtomDetectionThreshold, const bool CheckFullAdmissibility,
+    const bool MakePWLsmoother)
 {
-    const bool RemoveNegativeJumps = true;
-    const bool MakePWLsmoother = true;
+    const bool RemoveNegativeJumps = true; //not applying this option leads to PWL functions which are not distributions. change to false only if you know what you're doing.
 
     SampleStats = SampleCharacteristics(Sample, Accuracy, CheckFullAdmissibility);
-    //TimeForSorting = SampleStats.TimeForSorting;
     ProbStack = ProblemStack(SampleStats, true, AtomDetectionMinimumSampleSize, RelativeAtomDetectionThreshold, EnforcedInterpolationQuantiles);
     SolStack = SolutionStack();
 

@@ -18,7 +18,8 @@ public:
     PiecewiseLinearDistribution(const DoubleVec &, const DoubleVec &);
     virtual ~PiecewiseLinearDistribution();
     unsigned int Length() const;
-
+    void scale(const double);
+    void shift(const double);
 };
 
 #endif // PIECEWISELINEARDISTRIBUTION

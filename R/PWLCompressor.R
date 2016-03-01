@@ -15,6 +15,7 @@
 #' @param min.size.atom.detection minimum sample size which needs to be satisfied such that the algorithm looks for atoms
 #' @param rel.atom.detection minimum proportion that a value has to be repeated in the sample in order to be considered as an atom
 #' @param check.strict.adm logical. If TRUE the algorithm search for strict admissibility
+#' @param smooth logical. If TRUE smoothing is applied
 #' @references Arbenz, P. and Guevara-Alarcon. W. (2016), \emph{Risk Measure Preserving Piecewise Linear Approximation of Empirical Distributions.} Preprint. \url{http://sites.google.com/site/philipparbenz/home/pwl-approximation}
 #' @return A list where X and Y cointains the abscissas and ordinates of the points for the admissible pwl approximation
 #' @examples
@@ -22,7 +23,7 @@
 #' Sample <- c(1,1.6,4.3,4.6,6,7.1,13,13.4,16,18.8)
 #' PWLapprox <- PWLCompressor(Sample, 0.01)
 #' @export
-PWLCompressor <- function(sample, accuracy = 0.01, enforced.quantiles = c(0,1), min.size.atom.detection = 1000, rel.atom.detection = 0.005, check.strict.adm = T){
-  .Call('Compressor', sample, accuracy, enforced.quantiles, min.size.atom.detection, rel.atom.detection, check.strict.adm)
+PWLCompressor <- function(sample, accuracy = 0.01, enforced.quantiles = c(0,1), min.size.atom.detection = 1000, rel.atom.detection = 0.005, check.strict.adm = F, smooth = T){
+  .Call('Compressor', sample, accuracy, enforced.quantiles, min.size.atom.detection, rel.atom.detection, check.strict.adm, smooth)
 }
 

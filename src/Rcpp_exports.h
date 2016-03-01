@@ -6,6 +6,6 @@
 #include "double_vec.h"
 #include "compressor.h"
 
-RcppExport SEXP Compressor(SEXP sample_, SEXP eps_, SEXP quantile_, SEXP minatom_, SEXP relatom_, SEXP fullcheck_);
+RcppExport SEXP Compressor(SEXP sample_, SEXP eps_, SEXP quantile_, SEXP minatom_, SEXP relatom_, SEXP fullcheck_, SEXP smooth_);
 
 #endif

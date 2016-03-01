@@ -3,7 +3,7 @@
 
 using namespace Rcpp;
 
-RcppExport SEXP Compressor(SEXP sample_, SEXP eps_, SEXP quantile_, SEXP minatom_, SEXP relatom_, SEXP fullcheck_){
+RcppExport SEXP Compressor(SEXP sample_, SEXP eps_, SEXP quantile_, SEXP minatom_, SEXP relatom_, SEXP fullcheck_, SEXP smooth_){
 BEGIN_RCPP
 	DoubleVec sample = Rcpp::as<DoubleVec>(sample_);
 	double eps = Rcpp::as<double>(eps_);
@@ -11,8 +11,9 @@ BEGIN_RCPP
   int minatom = Rcpp::as<int>(minatom_);
   double relatom = Rcpp::as<double>(relatom_);
   bool fullcheck = Rcpp::as<bool>(fullcheck_);
+  bool smooth = Rcpp::as<bool>(smooth_);
 
-	PWLCompressor Comp = PWLCompressor(sample, eps, quantile, minatom, relatom, fullcheck);
+	PWLCompressor Comp = PWLCompressor(sample, eps, quantile, minatom, relatom, fullcheck, smooth);
 
 	std::vector<double> Xval = Comp.GetResult().Xvalues;
 	std::vector<double> Yval = Comp.GetResult().Yvalues;

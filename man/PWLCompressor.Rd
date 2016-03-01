@@ -6,7 +6,7 @@
 \usage{
 PWLCompressor(sample, accuracy = 0.01, enforced.quantiles = c(0, 1),
   min.size.atom.detection = 1000, rel.atom.detection = 0.005,
-  check.strict.adm = T)
+  check.strict.adm = F, smooth = T)
 }
 \arguments{
 \item{sample}{a vector with the sample values}
@@ -20,6 +20,8 @@ PWLCompressor(sample, accuracy = 0.01, enforced.quantiles = c(0, 1),
 \item{rel.atom.detection}{minimum proportion that a value has to be repeated in the sample in order to be considered as an atom}
 
 \item{check.strict.adm}{logical. If TRUE the algorithm search for strict admissibility}
+
+\item{smooth}{logical. If TRUE smoothing is applied}
 }
 \value{
 A list where X and Y cointains the abscissas and ordinates of the points for the admissible pwl approximation
