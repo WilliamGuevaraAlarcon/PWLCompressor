@@ -2,4 +2,4 @@
 
 export(PWLCompressor)
 importFrom(Rcpp,sourceCpp)
-useDynLib(compressor)
+useDynLib(PWLCompressor)

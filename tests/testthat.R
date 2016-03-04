@@ -1,4 +1,4 @@
 library(testthat)
-library(compressor)
+library(PWLCompressor)
 
-test_check("compressor")
+test_check("PWLCompressor")

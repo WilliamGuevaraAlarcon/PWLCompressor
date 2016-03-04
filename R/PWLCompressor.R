@@ -6,7 +6,7 @@
 
 #' Compress an edf from a sample to a pwl distribution
 #'
-#' @useDynLib compressor
+#' @useDynLib PWLCompressor
 #' @importFrom Rcpp sourceCpp
 #'
 #' @param sample a vector with the sample values
