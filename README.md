@@ -4,7 +4,7 @@ PWLCompressor
 
 PWLCompressor is an R implementation of a piecewise linear approximation for empirical sample distributions preserving tail value-at-risk measure.
 
-For details see Arbenz, P. and Guevara-Alarcon. W. (2016), . Preprint.
+For details see Arbenz, P. and Guevara-Alarcon. W. (2016), [*Risk Measure Preserving Piecewise Linear Approximation of Empirical Distributions*](http://sites.google.com/site/philipparbenz/home/pwl-approximation)
 
 Installation
 ============
