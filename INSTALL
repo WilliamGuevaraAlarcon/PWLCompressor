@@ -2,7 +2,36 @@
 ##### https://sites.google.com/site/philipparbenz/home/pwl-approximation
 
 ################################################################################
-############### 1.) Installing the package from source file ####################
+############### 1.) Installing the package from binary file (in Windows)########
+################################################################################
+
+##### Install dependencies from CRAN (Rcpp package version 0.11.0 or later)
+
+install.packages("Rcpp")
+
+##### Install locally from file
+
+##### Go to menu: Packages -> Install package from local zip files ->
+##### PWLCompressor_1.1.0.zip
+
+##### Load the package
+
+library(PWLCompressor)
+
+##### Use PWLCompressor function
+
+Sample <- c(1,1.6,4.3,4.6,6,7.1,13,13.4,16,18.8)
+PWLapprox <- PWLCompressor(Sample, 0.01)
+
+?PWLCompressor  ##For help page
+
+##### Instruction to unload the package
+
+# detach(package:PWLCompressor)
+
+
+################################################################################
+############### 2.) Installing the package from source file ####################
 ################################################################################
 
 ##### To install the package from source it is necessary to have development
@@ -55,32 +84,4 @@ PWLapprox <- PWLCompressor(Sample, 0.01)
 # detach(package:PWLCompressor)
 
 
-
-################################################################################
-############### 1.) Installing the package from binary file (in Windows)########
-################################################################################
-
-##### Install dependencies from CRAN (Rcpp package version 0.11.0 or later)
-
-install.packages("Rcpp")
-
-##### Install locally from file
-
-##### Go to menu: Packages -> Install package from local zip files ->
-##### PWLCompressor_1.1.0.zip
-
-##### Load the package
-
-library(PWLCompressor)
-
-##### Use PWLCompressor function
-
-Sample <- c(1,1.6,4.3,4.6,6,7.1,13,13.4,16,18.8)
-PWLapprox <- PWLCompressor(Sample, 0.01)
-
-?PWLCompressor  ##For help page
-
-##### Instruction to unload the package
-
-# detach(package:PWLCompressor)
 
